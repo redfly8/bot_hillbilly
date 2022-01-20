@@ -29,7 +29,10 @@ client.on('message', message =>{
         client.commands.get('ping').execute(message, args);
     }   else if(command == 'rules') {
         client.commands.get('rules').execute(message, args, Discord);
+    } else if(command == 'magic8'){
+        client.commands.get('magic8').execute(message, args);
     }
+
 });
  
 client.login('OTMxNTk2OTUxMDY0MDM1MzM4.YeGvRQ.Zpq3wc_wa8ahX7YsQAwBorJR9Ic');
