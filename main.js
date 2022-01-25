@@ -44,8 +44,8 @@ client.on('message', message => {
         //client.commands.get('command').execute(message, args, Discord);
     //} else if (command == 'dm') {
         //client.commands.get('dm').execute(message, args, Discord);
-    } else if (command == 'clear') {
-        client.commands.get('clear').execute(message, args);
+    //} else if (command == 'clear') {
+        //client.commands.get('clear').execute(message, args);
     } else if (command == 'kick') {
         client.commands.get('kick').execute(message, args, Discord);
     } else if (command == 'ban') {
