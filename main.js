@@ -2,7 +2,7 @@ const { channel } = require('diagnostics_channel');
 const Discord = require('discord.js');
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 
-const prefix = '-';
+const prefix = '?';
 
 const fs = require('fs');
 const { CLIENT_RENEG_WINDOW } = require('tls');
