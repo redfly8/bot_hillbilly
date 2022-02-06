@@ -11,7 +11,8 @@ module.exports = {
             {name:'unmute' , value:'manually unmutes a person. Syntax: ?unmute [user] '},
             {name:'ban' , value:'bans a person. Syntax: ?ban [user] [reason]'},
             {name:'kick' , value: "kicks a member. Syntax: ?kick [user] [reason] "},
-            {name:'clear' , value:'clears a set amount of messages. Syntax: ?clear [amount] note: you can only delete messages that are max. 14 days old.'}
+            {name:'clear' , value:'clears a set amount of messages. Syntax: ?clear [amount] note: you can only delete messages that are max. 14 days old.'},
+            {name:'vote' , value: "add (see members help), init and delete. \n -init: makes a new dedicated voting channel. Syntax: ?vote init[name you want your channel to be] \n -delete deletes a dedicated voting channel. If you don't need a votingchannel anymore, please use this and don't just delete the channel. Syntax: [do this in the votingchannel you want to delete] ?vote delete "}
             
         )
 
@@ -20,7 +21,8 @@ module.exports = {
         .setTitle('member-help')
         .addFields(
             {name: 'magic8' , value: 'sends a totally not random answer. Syntax: ?magic8 [question]'},
-            {name:'ping' , value:'toggles your ping role on or off.'}
+            {name:'ping' , value:'toggles your ping role on or off.'},
+            {name:'vote add' , value:'adds a voting entry. This only works in dedicated voting channels. Syntax: ?vote add [whatever you want, a description and a link to modhub for example]'}
         )
         const help_1 = new Discord.MessageEmbed()
         .setColor('BLUE')
