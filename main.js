@@ -60,7 +60,9 @@ client.on('message', message => {
         client.commands.get('help').execute(message, args, Discord);
     } else if(command == 'magic8') {
         client.commands.get('magic8').execute(message, args);
-    } 
+    } else if(command == 'vote'){
+        client.commands.get('vote').execute(message, args, Discord);
+    }
 })
 
 
