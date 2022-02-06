@@ -32,6 +32,7 @@ module.exports = {
             
             if(!args[1]){"please add content you want to vote about."}
             const content = argssave.splice(1, argssave.length ).join(' ') 
+            message.delete();
             
             const voting_embed = new Discord.MessageEmbed() 
                 .setColor('#009900')
