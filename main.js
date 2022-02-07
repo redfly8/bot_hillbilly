@@ -34,8 +34,8 @@ client.on('message', message => {
         if(!message.content.startsWith(prefix)){return}
         
         
-        const args_ban = message.content.split('/');
-        if(args_ban.length < 3){return message.channel.send("syntax: ?user/server/reason")}
+        const args_ban = message.content.slice(prefix.length).split('/');
+        if(args_ban.length < 3){return message.channel.send("syntax: ?server/user/reason")}
         let admin = message.author;
 
         let ban_embed = new Discord.MessageEmbed() 
@@ -43,8 +43,8 @@ client.on('message', message => {
         .setTitle('ban ⛔')
         .addFields(
             { name: 'admin', value:admin },
-            { name: 'user', value: args_ban[0] },
-            { name: 'server', value: args_ban[1] },
+            { name: 'server', value: args_ban[0] },
+            { name: 'user', value: args_ban[1] },
             { name: 'reason', value: args_ban[2] },
         
             );
