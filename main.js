@@ -30,7 +30,7 @@ client.on('guildMemberAdd', guildMember =>{
 
 client.on('message', message => {
     if(message.author.bot){return}
-    if(message.channel.id == '940283508285378580'){
+    if(message.channel.id == '928033403868172299'){
         if(!message.content.startsWith(prefix)){return}
         
         
