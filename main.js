@@ -29,6 +29,30 @@ client.on('guildMemberAdd', guildMember =>{
 });
 
 client.on('message', message => {
+    if(message.author.bot){return}
+    if(message.channel.id == '940283508285378580'){
+        if(!message.content.startsWith(prefix)){return}
+        
+        
+        const args_ban = message.content.split('/');
+        if(args_ban.length < 3){return message.channel.send("syntax: ?user/server/reason")}
+        let admin = message.author;
+
+        let ban_embed = new Discord.MessageEmbed() 
+        .setColor('#990000')
+        .setTitle('ban ⛔')
+        .addFields(
+            { name: 'admin', value:admin },
+            { name: 'user', value: args_ban[0] },
+            { name: 'server', value: args_ban[1] },
+            { name: 'reason', value: args_ban[2] },
+        
+            );
+            message.delete();
+            message.channel.send(ban_embed)
+            
+            
+    }
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
