@@ -59,6 +59,11 @@ module.exports = {
             
             message.channel.delete();
 
+        }else if(args[0] == 'reinit'){
+            if(!message.member.permissions.has("ADMINISTRATOR")){message.reply("you need administrating permissions for this.")}
+            channels.push(message.channel.id)
+            message.channel.send("I have re initialized this channel.")
+
         }
 
         
