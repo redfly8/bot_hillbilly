@@ -92,4 +92,4 @@ client.on('message', message => {
 
 
 console.log(process.env.BOT_TOKEN)
-client.login(process.env.BOT_TOKEN);
+//client.login(process.env.BOT_TOKEN);
