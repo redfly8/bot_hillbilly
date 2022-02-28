@@ -1,3 +1,4 @@
+
 const { channel } = require('diagnostics_channel');
 const Discord = require('discord.js');
 const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
@@ -91,5 +92,6 @@ client.on('message', message => {
 
 
 
-console.log(process.env.BOT_TOKEN)
+console.log(process.env['BOT_TOKEN'])
+client.login(process.env['BOT_TOKEN'])
 //client.login(process.env.BOT_TOKEN);
