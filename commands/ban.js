@@ -23,7 +23,7 @@ module.exports = {
         try{   
             let ban = await memberTarget.send(`you have been banned from heehaws hillbillys by ${mod} for ${reason}`);
              memberTarget.ban()
-        }catch{return  memberTarget.ban()}
+        }catch{memberTarget.ban()}
     
 
         
