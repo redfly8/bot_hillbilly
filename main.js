@@ -1,9 +1,12 @@
 
-const { channel } = require('diagnostics_channel');
 const Discord = require('discord.js');
-const client = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
-require('dotenv').config();
-const prefix = '?';
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
+
+
+const config = require('./config.json')
+
+const prefix = config.prefix;
+const TOKEN = config.token;
 
 const fs = require('fs');
 const { CLIENT_RENEG_WINDOW } = require('tls');
@@ -22,7 +25,7 @@ client.once('ready', () => {
     console.log('bot_online');
 });
 
-client.on('guildMemberAdd', guildMember =>{
+client.on('guildMemberAdd', guildMember => {
     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
     guildMember.roles.add(welcomeRole)
     //guildMember.guild.channels.cache.get('931649159021330502').send('channel_welcome_msg') 
@@ -30,29 +33,29 @@ client.on('guildMemberAdd', guildMember =>{
 });
 
 client.on('message', message => {
-    if(message.author.bot){return}
-    if(message.channel.id == '928033403868172299'){
-        if(!message.content.startsWith(prefix)){return}
-        
-        
+    if (message.author.bot) { return }
+    if (message.channel.id == '928033403868172299') {
+        if (!message.content.startsWith(prefix)) { return }
+
+
         const args_ban = message.content.slice(prefix.length).split('/');
-        if(args_ban.length < 3){return message.channel.send("syntax: ?server/user/reason")}
+        if (args_ban.length < 3) { return message.channel.send("syntax: ?server/user/reason") }
         let admin = message.author;
 
-        let ban_embed = new Discord.MessageEmbed() 
-        .setColor('#990000')
-        .setTitle('ban ⛔')
-        .addFields(
-            { name: 'admin', value:admin },
-            { name: 'server', value: args_ban[0] },
-            { name: 'user', value: args_ban[1] },
-            { name: 'reason', value: args_ban[2] },
-        
+        let ban_embed = new Discord.MessageEmbed()
+            .setColor('#990000')
+            .setTitle('ban ⛔')
+            .addFields(
+                { name: 'admin', value: admin },
+                { name: 'server', value: args_ban[0] },
+                { name: 'user', value: args_ban[1] },
+                { name: 'reason', value: args_ban[2] },
+
             );
-            message.delete();
-            message.channel.send(ban_embed)
-            
-            
+        message.delete();
+        message.channel.send(ban_embed)
+
+
     }
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -61,15 +64,15 @@ client.on('message', message => {
 
     if (command === 'ping') {
         client.commands.get('ping').execute(message, args);
-    //} else if (command == 'youtube') {
+        //} else if (command == 'youtube') {
         //client.commands.get('youtube').execute(message, args);
-    //} else if (command == 'pkick') {
-       // client.commands.get('pkick').execute(message, args);
-    //} else if (command == 'command') {
+        //} else if (command == 'pkick') {
+        // client.commands.get('pkick').execute(message, args);
+        //} else if (command == 'command') {
         //client.commands.get('command').execute(message, args, Discord);
-    //} else if (command == 'dm') {
+        //} else if (command == 'dm') {
         //client.commands.get('dm').execute(message, args, Discord);
-    //} else if (command == 'clear') {
+        //} else if (command == 'clear') {
         //client.commands.get('clear').execute(message, args);
     } else if (command == 'kick') {
         client.commands.get('kick').execute(message, args, Discord);
@@ -79,19 +82,19 @@ client.on('message', message => {
         client.commands.get('mute').execute(message, args, Discord);
     } else if (command == 'unmute') {
         client.commands.get('unmute').execute(message, args, Discord);
-    //} else if (command == 'reactionping' ){
+        //} else if (command == 'reactionping' ){
         //client.commands.get('reactionping').execute(message, args, Discord, client);
-    } else if(command == 'help') {
+    } else if (command == 'help') {
         client.commands.get('help').execute(message, args, Discord);
-    } else if(command == 'magic8') {
+    } else if (command == 'magic8') {
         client.commands.get('magic8').execute(message, args);
-    } else if(command == 'vote'){
+    } else if (command == 'vote') {
         client.commands.get('vote').execute(message, args, Discord);
     }
 })
 
 
 
-console.log(process.env['BOT_TOKEN'])
-client.login(process.env['BOT_TOKEN'])
+
+client.login(TOKEN)
 //client.login(process.env.BOT_TOKEN);
